@@ -78,4 +78,6 @@ pickle-email-*.html
 .env
 .powenv
 
+# Custom
 /bin/
+*.csv
