@@ -1,0 +1,7 @@
+<td><%= drink.name %></td>
+<td><%= drink.glass %></td>
+<td><%= drink.directions %></td>
+<td><%= drink.source %></td>
+<td><%= link_to 'Show', drink %></td>
+<td><%= link_to 'Edit', edit_drink_path(drink) %></td>
+<td><%= link_to 'Destroy', drink, method: :delete, data: { confirm: 'Are you sure?' } %></td>

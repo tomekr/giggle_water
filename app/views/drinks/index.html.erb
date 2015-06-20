@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <h3>Drinks</h3>
+    <table class="table">
+      <thead>
+        <th>Name</th>
+        <th>Glass</th>
+        <th>Directions</th>
+        <th>Source</th>
+      </thead>
+      <tbody>
+        <% @drinks.each do |drink| %>
+          <tr>
+            <%= render drink %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
