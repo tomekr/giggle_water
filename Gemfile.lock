@@ -133,7 +133,6 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.2)
       loofah (~> 2.0)
-    rails_apps_pages (0.6.0)
     rails_layout (1.0.26)
     railties (4.2.2)
       actionpack (= 4.2.2)
@@ -197,7 +196,6 @@ DEPENDENCIES
   pundit
   quiet_assets
   rails (= 4.2.2)
-  rails_apps_pages
   rails_layout
   sass-rails (~> 5.0)
   spring
