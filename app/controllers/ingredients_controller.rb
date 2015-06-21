@@ -4,11 +4,7 @@ class IngredientsController < ApplicationController
   # GET /ingredients
   # GET /ingredients.json
   def index
-    @ingredient_counts = Hash.new(0)
-
-    DrinkItem.all.each do |drink_item|
-      @ingredient_counts[drink_item.ingredient] +=1
-    end
+    @ingredients = Ingredient.order('drink_items_count DESC').page(params[:page])
   end
 
   # GET /ingredients/1
