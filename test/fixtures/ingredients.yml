@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+tanqueray:
+  name: Tanqueray Gin
+  ingredient_type: London Dry Gin
+
+beefeater:
+  name: Beefeater Gin
+  ingredient_type: London Dry Gin
+
+green_chartreuse:
+  name: Green Chartreuse
+  ingredient_type: Liqueur
+
+lime_juice:
+  name: Lime Juice
+  ingredient_type: Citrus Juice

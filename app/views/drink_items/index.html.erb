@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Drink Items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ingredient</th>
+      <th>Drink</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @drink_items.each do |drink_item| %>
+      <tr>
+        <td><%= drink_item.ingredient %></td>
+        <td><%= drink_item.drink %></td>
+        <td><%= link_to 'Show', drink_item %></td>
+        <td><%= link_to 'Edit', edit_drink_item_path(drink_item) %></td>
+        <td><%= link_to 'Destroy', drink_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Drink item', new_drink_item_path %>

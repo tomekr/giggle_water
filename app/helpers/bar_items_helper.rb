@@ -1,0 +1,2 @@
+module BarItemsHelper
+end

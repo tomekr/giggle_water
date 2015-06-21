@@ -1,5 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-last_word:
-  name: Last Word
-  directions: Shake with ice and strain into a chilled coupe
+one:
+  name: MyString
+
+two:
+  name: MyString

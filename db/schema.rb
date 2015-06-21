@@ -11,7 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150620180430) do
+ActiveRecord::Schema.define(version: 20150621193919) do
+
+  create_table "bar_items", force: :cascade do |t|
+    t.integer  "ingredient_id"
+    t.integer  "bar_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "bar_items", ["bar_id"], name: "index_bar_items_on_bar_id"
+  add_index "bar_items", ["ingredient_id"], name: "index_bar_items_on_ingredient_id"
+
+  create_table "bars", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+  end
+
+  add_index "bars", ["user_id"], name: "index_bars_on_user_id"
+
+  create_table "drink_items", force: :cascade do |t|
+    t.integer  "ingredient_id"
+    t.integer  "drink_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "amount"
+  end
+
+  add_index "drink_items", ["drink_id"], name: "index_drink_items_on_drink_id"
+  add_index "drink_items", ["ingredient_id"], name: "index_drink_items_on_ingredient_id"
 
   create_table "drinks", force: :cascade do |t|
     t.string   "name"
@@ -20,6 +50,15 @@ ActiveRecord::Schema.define(version: 20150620180430) do
     t.string   "source"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string   "amount"
+    t.string   "use"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "name"
+    t.string   "ingredient_type"
   end
 
   create_table "users", force: :cascade do |t|

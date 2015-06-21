@@ -1,24 +1,42 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @drink.name %>
-</p>
 
-<p>
-  <strong>Glass:</strong>
-  <%= @drink.glass %>
-</p>
+<div class="container">
+  <h2><%= @drink.name %></h2>
 
-<p>
-  <strong>Directions:</strong>
-  <%= @drink.directions %>
-</p>
+  <p>
+    <strong>Glass:</strong>
+    <%= @drink.glass %>
+  </p>
 
-<p>
-  <strong>Source:</strong>
-  <%= @drink.source %>
-</p>
+  <p>
+    <strong>Directions:</strong>
+    <%= @drink.directions %>
+  </p>
+
+  <p>
+    <strong>Source:</strong>
+    <%= @drink.source %>
+  </p>
+
+  <div class="row">
+    <h3>Ingredients</h3>
+    <table class="table">
+      <thead>
+        <th>Name</th>
+        <th>Amount</th>
+      </thead>
+      <tbody>
+        <% @drink.drink_items.each do |drink_item| %>
+          <tr>
+            <td><%= drink_item.ingredient.name %></td>
+            <td><%= drink_item.amount %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_drink_path(@drink) %> |
 <%= link_to 'Back', drinks_path %>
