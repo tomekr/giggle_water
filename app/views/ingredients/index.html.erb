@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Ingredients</h1>
+
+<table class="table-condensed table-bordered">
+  <thead>
+    <tr>
+      <th>Ingredient</th>
+      <th># of Cocktails</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ingredient_counts.each do |ingredient, count| %>
+      <tr>
+        <td><%= ingredient.name %></td>
+        <td><%= count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ingredient', new_ingredient_path %>
