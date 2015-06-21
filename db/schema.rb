@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150621193919) do
+ActiveRecord::Schema.define(version: 20150621200926) do
 
   create_table "bar_items", force: :cascade do |t|
     t.integer  "ingredient_id"
@@ -35,9 +35,10 @@ ActiveRecord::Schema.define(version: 20150621193919) do
   create_table "drink_items", force: :cascade do |t|
     t.integer  "ingredient_id"
     t.integer  "drink_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.string   "amount"
+    t.string   "ingredient_use"
   end
 
   add_index "drink_items", ["drink_id"], name: "index_drink_items_on_drink_id"
