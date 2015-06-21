@@ -1,5 +1,8 @@
 require 'csv'
 require 'pry'
+
+DRINKS_CSV = "pdt.csv"
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -13,7 +16,7 @@ puts 'CREATED ADMIN USER: ' << user.email
 # Populate drink database from PDT export
 
 drinks = {}
-CSV.foreach("pdt_small.csv", {:headers => true}).each do |row|
+CSV.foreach(DRINKS_CSV, {:headers => true}).each do |row|
   if drinks[row["Drink"]]
     drinks[row["Drink"]][:drink_items] << {name: row["Ingredient"],
                                           amount: row["Amount"],
@@ -31,7 +34,9 @@ CSV.foreach("pdt_small.csv", {:headers => true}).each do |row|
   end
 end
 
+puts "Importing Drinks from #{DRINKS_CSV}"
 drinks.each do |drink_name, attributes|
+  print "."
   drink = Drink.new(name: drink_name, glass: attributes[:glass], directions: attributes[:directions])
 
   attributes[:drink_items].each do |drink_item|
@@ -42,3 +47,4 @@ drinks.each do |drink_name, attributes|
   end
   drink.save
 end
+puts "done"
