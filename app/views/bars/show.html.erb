@@ -1,9 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @bar.name %>
-</p>
+<div class="container">
+  <div class="row">
+    <h2><%= @bar.name %></h2>
+  </div>
+  <div class="row">
+    <h3>Bar Items</h2>
+    <table class="table">
+    <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+    </thead>
+      <% @bar.bar_items.each do |bar_item| %>
+        <tr>
+          <td>bar_item.ingredient.name</td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_bar_path(@bar) %> |
 <%= link_to 'Back', bars_path %>
