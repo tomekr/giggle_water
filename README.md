@@ -1,4 +1,4 @@
-<img src='https://github.com/tomekr/giggle_water/blob/master/public/giggle.jpg' alt='Giggle Water Image' style='max-width:25%;'/>
+![Giggle Water](https://github.com/tomekr/giggle_water/blob/master/public/giggle.jpg)
 
 Giggle Water
 ================
