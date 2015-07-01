@@ -1,7 +1,36 @@
-<td><%= drink.name %></td>
-<td><%= drink.glass %></td>
-<td><%= drink.directions %></td>
-<td><%= drink.source %></td>
-<td><%= link_to 'Show', drink %></td>
-<td><%= link_to 'Edit', edit_drink_path(drink) %></td>
-<td><%= link_to 'Destroy', drink, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<h2><%= drink.name %></h2>
+
+<p>
+  <strong>Glass:</strong>
+  <%= drink.glass %>
+</p>
+
+<p>
+  <strong>Directions:</strong>
+  <%= drink.directions %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= drink.source %>
+</p>
+</div>
+
+<div class="row">
+<h3>Ingredients</h3>
+<table class="table">
+  <thead>
+    <th>Name</th>
+    <th>Amount</th>
+    <th>Use</th>
+  </thead>
+  <tbody>
+    <% drink.drink_items.order("ingredient_use asc").each do |drink_item| %>
+      <tr>
+        <td><%= drink_item.ingredient.name %></td>
+        <td><%= drink_item.amount %></td>
+        <td><%= drink_item.ingredient_use %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

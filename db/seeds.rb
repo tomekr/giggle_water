@@ -20,7 +20,7 @@ CSV.foreach(DRINKS_CSV, {:headers => true}).each do |row|
   if drinks[row["Drink"]]
     drinks[row["Drink"]][:drink_items] << {name: row["Ingredient"],
                                           amount: row["Amount"],
-                                          ingridient_use: row["IngredientUse"]}
+                                          ingredient_use: row["IngredientUse"]}
 
   else
     drink_name = row["Drink"]
@@ -30,7 +30,7 @@ CSV.foreach(DRINKS_CSV, {:headers => true}).each do |row|
     drinks[drink_name][:drink_items] = []
     drinks[drink_name][:drink_items] << {name: row["Ingredient"],
                                           amount: row["Amount"],
-                                          ingridient_use: row["IngredientUse"]}
+                                          ingredient_use: row["IngredientUse"]}
   end
 end
 

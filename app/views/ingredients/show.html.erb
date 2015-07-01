@@ -1,4 +1,27 @@
 <p id="notice"><%= notice %></p>
 
+<div class="container">
+  <div class="row">
+    <h2><%= @ingredient.name %></h2>
+
+    <h4>Used in:</h2>
+    <table class="table-condensed table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @used_in.each do |drink| %>
+          <tr data-link="<%= drink_path(drink) %>">
+            <td><%= drink.name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
 <%= link_to 'Edit', edit_ingredient_path(@ingredient) %> |
 <%= link_to 'Back', ingredients_path %>

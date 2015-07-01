@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     <h2>Listing Ingredients</h1>
-    <table class="table">
+    <table class="table table-hover table-bordered">
       <thead>
         <tr>
           <th>Ingredient</th>
@@ -13,7 +13,7 @@
 
       <tbody>
         <% @ingredients.each do |ingredient| %>
-          <tr>
+          <tr data-link="<%= ingredient_path(ingredient) %>">
             <td><%= ingredient.name %></td>
             <td><%= ingredient.drink_items_count %></td>
           </tr>

@@ -8,6 +8,10 @@ class Ingredient < ActiveRecord::Base
   before_destroy :ensure_not_referenced_by_any_bar_item
   before_destroy :ensure_not_referenced_by_any_drink_item
 
+  def drinks
+    self.drink_items.map{|drink_item| drink_item.drink}
+  end
+
   private
 
     def ensure_not_referenced_by_any_bar_item

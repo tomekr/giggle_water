@@ -4,7 +4,7 @@ class DrinksController < ApplicationController
   # GET /drinks
   # GET /drinks.json
   def index
-    @drinks = Drink.order('created_at desc').page(params[:page])
+    @drinks = Drink.order('name asc').page(params[:page])
   end
 
   # GET /drinks/1
