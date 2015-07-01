@@ -1,3 +1,5 @@
+![Giggle Water](https://github.com/tomekr/giggle_water/blob/master/public/giggle.jpg)
+
 Giggle Water
 ================
 
