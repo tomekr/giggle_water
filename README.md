@@ -21,24 +21,24 @@ Getting your development enviornment setup for the first time:
 3. You will need to create a `database.yml` file, run `touch
    config/database.yml` and put in the default sqlite configuration:
 
-```yaml
-default: &default
-  adapter: sqlite3
-  pool: 5
-  timeout: 5000
+  ```yaml
+  default: &default
+    adapter: sqlite3
+    pool: 5
+    timeout: 5000
 
-development:
-  <<: *default
-  database: db/development.sqlite3
+  development:
+    <<: *default
+    database: db/development.sqlite3
 
-test:
-  <<: *default
-  database: db/test.sqlite3
+  test:
+    <<: *default
+    database: db/test.sqlite3
 
-production:
-  <<: *default
-  database: db/production.sqlite3
-```
+  production:
+    <<: *default
+    database: db/production.sqlite3
+  ```
 
 4. Run the `rake db:migrate` command
 5. Run the `rake db:seed` command (This populates the database with
