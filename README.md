@@ -17,8 +17,8 @@ Development
 Getting your development enviornment setup for the first time:
 
 1. Clone this repository and `cd` into the giggle_water directory
-2. Run the `bundle install` command
-3. You will need to create a `database.yml` file, run `touch
+1. Run the `bundle install` command
+1. You will need to create a `database.yml` file, run `touch
    config/database.yml` and put in the default sqlite configuration:
 
   ```yaml
@@ -40,13 +40,18 @@ Getting your development enviornment setup for the first time:
     database: db/production.sqlite3
   ```
 
-4. Run the `rake db:migrate` command
-5. Run the `rake db:seed` command (This populates the database with
+1. Run the `rake db:migrate` command
+1. Run the `rake db:seed` command (This populates the database with
    recipes from the PDT cocktail book)
-6. From here you can start the web server by using the `rails server`
+1. From here you can start the web server by using the `rails server`
    command.
-7. Navigate to [http://localhost:3000](http://localhost:3000) (Note: you can login with the
+1. Navigate to [http://localhost:3000](http://localhost:3000) (Note: you can login with the
    account found in `config/secrets.yml`)
+
+Features
+--------
+
+Features are currently tracked at [https://www.pivotaltracker.com/n/projects/1360904](https://www.pivotaltracker.com/n/projects/1360904)
 
 License
 -------
