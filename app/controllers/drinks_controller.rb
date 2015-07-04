@@ -1,5 +1,5 @@
 class DrinksController < ApplicationController
-  before_action :set_drink, only: [:show, :edit, :update, :destroy]
+  before_action :set_drink, only: [:show, :edit, :update, :destroy, :favorite]
 
   # GET /drinks
   # GET /drinks.json
@@ -59,6 +59,20 @@ class DrinksController < ApplicationController
       format.html { redirect_to drinks_url, notice: 'Drink was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def favorite
+    type = params[:type]
+    if type == "favorite"
+      current_user.favorites << @drink
+      redirect_to @drink, notice: 'Drink favorited'
+    elsif type == "unfavorite"
+      current_user.favorites.delete(@drink)
+      redirect_to @drink, notice: 'Drink unfavorited'
+    else
+      redirect_to @drink, notice: 'Nothing happened.'
+    end
+    
   end
 
   private

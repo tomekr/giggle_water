@@ -8,4 +8,9 @@
 </div>
 
 <%= link_to 'Edit', edit_drink_path(@drink) %> |
-<%= link_to 'Back', drinks_path %>
+<%= link_to 'Back', drinks_path %> |
+<% unless current_user.favorite_drinks.exists?(drink_id: @drink.id) %>
+  <%= link_to 'Favorite', favorite_drink_path(@drink, type: "favorite"), method: :put %>
+<% else %>
+  <%= link_to 'Unfavorite', favorite_drink_path(@drink, type: "unfavorite"), method: :put %>
+<% end %>
