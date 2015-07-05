@@ -63,14 +63,19 @@ class DrinksController < ApplicationController
 
   def favorite
     type = params[:type]
-    if type == "favorite"
-      current_user.favorites << @drink
-      redirect_to @drink, notice: 'Drink favorited'
-    elsif type == "unfavorite"
-      current_user.favorites.delete(@drink)
-      redirect_to @drink, notice: 'Drink unfavorited'
-    else
-      redirect_to @drink, notice: 'Nothing happened.'
+    respond_to do |format|
+      if type == "favorite"
+        current_user.favorites << @drink
+        format.html { redirect_to @drink, notice: 'Drink favorited' }
+        format.json { render :show, status: :ok, location: @drink }
+      elsif type == "unfavorite"
+        current_user.favorites.delete(@drink)
+        format.html { redirect_to @drink, notice: 'Drink unfavorited' }
+        format.json { render :show, status: :ok, location: @drink }
+      else
+        format.html { redirect_to @drink }
+        format.json { render json: @drink.errors, status: :unprocessable_entity }
+      end
     end
     
   end
