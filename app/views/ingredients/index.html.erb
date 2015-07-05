@@ -16,10 +16,7 @@
         <% @ingredients.each do |ingredient| %>
           <tr data-link="<%= ingredient_path(ingredient) %>">
             <td>
-              <button type="button" class="btn btn-primary btn-xs">
-                <span class="glyphicon glyphicon-plus"></span>
-                Add
-              </button>
+              <%= render 'add_or_in', ingredient: ingredient %>
             </td>
             <td>
               <%= ingredient.name %>

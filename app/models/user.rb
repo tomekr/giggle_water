@@ -16,4 +16,9 @@ class User < ActiveRecord::Base
   def current_bar
     self.bars.find(self.current_bar_id)
   end
+
+  def set_current_bar(bar_id)
+    self.current_bar_id = bar_id
+    self.save
+  end
 end

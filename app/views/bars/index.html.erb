@@ -27,7 +27,7 @@
             <% if bar.current? %>
               <td><span class="label label-success">current</span></td>
             <% else %>
-              <td><button class="btn btn-primary btn-xs" type="submit">Make Current</button></td>
+              <td><%= button_to "Make Current", {:controller => :bars, :action => 'make_current', :id => bar.id }, :method => :post%></td>
             <% end %>
 
             <td><%= link_to 'Show', bar %></td>

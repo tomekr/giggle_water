@@ -1,0 +1,5 @@
+<% if current_user.current_bar.bar_items.find_by_ingredient_id(ingredient.id) %>
+  <span class="label label-success">in your bar</span>
+<% else %>
+  <%= button_to "Add", {:controller => :ingredients, :action => 'add_to_bar', :id => ingredient.id }, :method => :post%>
+<% end %>

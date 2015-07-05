@@ -1,5 +1,5 @@
 class BarsController < ApplicationController
-  before_action :set_bar, only: [:show, :edit, :update, :destroy]
+  before_action :set_bar, only: [:show, :edit, :update, :destroy, :make_current]
 
   # GET /bars
   # GET /bars.json
@@ -59,6 +59,14 @@ class BarsController < ApplicationController
       format.html { redirect_to bars_url, notice: 'Bar was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def make_current
+    current_user.set_current_bar(@bar.id)
+
+    #TODO There should probably be a flash message here if there was an error
+
+    redirect_to bars_path
   end
 
   private
