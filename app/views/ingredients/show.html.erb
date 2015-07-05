@@ -2,24 +2,36 @@
 
 <div class="container">
   <div class="row">
-    <h2><%= @ingredient.name %></h2>
+    <div class="row">
+      <div class="col-md-3">
+        <h2><%= @ingredient.name %></h2>
+      </div>
+      <div class="col-md-1">
+        <button type="button" class="btn btn-primary btn-xs center-block">
+          <span class="glyphicon glyphicon-plus"></span>
+          Add
+        </button>
+      </div>
+    </div>
 
-    <h4>Used in:</h2>
-    <table class="table-condensed table-bordered table-hover">
-      <thead>
-        <tr>
-          <th>Name</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @used_in.each do |drink| %>
-          <tr data-link="<%= drink_path(drink) %>">
-            <td><%= drink.name %></td>
+    <div class="row">
+      <h4>Used in:</h2>
+      <table class="table-condensed table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+
+        <tbody>
+          <% @used_in.each do |drink| %>
+            <tr data-link="<%= drink_path(drink) %>">
+              <td><%= drink.name %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 

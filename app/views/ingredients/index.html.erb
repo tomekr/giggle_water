@@ -3,9 +3,10 @@
 <div class="container">
   <div class="row">
     <h2>Listing Ingredients</h1>
-    <table class="table table-hover table-bordered">
+    <table class="table-condensed table-hover table-bordered">
       <thead>
         <tr>
+          <th></th>
           <th>Ingredient</th>
           <th># of Cocktails</th>
         </tr>
@@ -14,7 +15,15 @@
       <tbody>
         <% @ingredients.each do |ingredient| %>
           <tr data-link="<%= ingredient_path(ingredient) %>">
-            <td><%= ingredient.name %></td>
+            <td>
+              <button type="button" class="btn btn-primary btn-xs">
+                <span class="glyphicon glyphicon-plus"></span>
+                Add
+              </button>
+            </td>
+            <td>
+              <%= ingredient.name %>
+            </td>
             <td><%= ingredient.drink_items_count %></td>
           </tr>
         <% end %>

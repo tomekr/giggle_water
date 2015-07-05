@@ -4,8 +4,7 @@ class BarsController < ApplicationController
   # GET /bars
   # GET /bars.json
   def index
-    @bars = Bar.all
-    @bar_items = @b
+    @bars = current_user.bars
   end
 
   # GET /bars/1
@@ -25,11 +24,11 @@ class BarsController < ApplicationController
   # POST /bars
   # POST /bars.json
   def create
-    @bar = Bar.new(bar_params)
+    @bar = current_user.bars.build(bar_params)
 
     respond_to do |format|
       if @bar.save
-        format.html { redirect_to @bar, notice: 'Bar was successfully created.' }
+        format.html { redirect_to bars_path, notice: 'Bar was successfully created.' }
         format.json { render :show, status: :created, location: @bar }
       else
         format.html { render :new }
@@ -65,7 +64,7 @@ class BarsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_bar
-      @bar = Bar.find(params[:id])
+      @bar = current_user.bars.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def current_bar
+    self.bars.find(self.current_bar_id)
+  end
 end
