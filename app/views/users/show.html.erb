@@ -1,8 +1,3 @@
 <h3>User</h3>
 <p>Name: <%= @user.name if @user.name %></p>
 <p>Email: <%= @user.email if @user.email %></p>
-
-<h2>Favorite drinks:</h2>
-<% @user.favorite_drinks.each do |fave| %>
-  <p><%= fave.drink.name %></p>
-<% end %>

@@ -32,5 +32,22 @@
       </tbody>
     </table>
 
-  </div>
+    <h3>Favorite Drinks</h3>
+    <table class="table table-bordered table-hover">
+      <thead>
+        <th>Name</th>
+        <th>Glass</th>
+        <th>Directions</th>
+      </thead>
+      <tbody>
+        <% current_user.favorite_drinks.each do |fave| %>
+          <tr data-link="<%= drink_path(fave.drink) %>">
+            <td><%= fave.drink.name %></td>
+            <td><%= fave.drink.glass %></td>
+            <td><%= fave.drink.directions %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
 </div>
