@@ -1,32 +1,34 @@
-<p id="notice"><%= notice %></p>
-
 <div class="container">
-  <% @drinks_missing_hash.each do |missing_count, drinks| %>
-    <% if missing_count == 0 %>
-      <div class="row">
-        <h4>Drinks you can make</h4>
-        <% drinks.each do |drink| %>
-          <p><%= drink[:name] %></p>
-        <% end %>
-      </div>
-    <% else %>
-      <div class="row">
-        <h4>Missing <%= missing_count %> Ingridients</h4>
-        <table class="table">
-          <thead>
-            <th>Name</th>
-            <th>Missing Ingredients</th>
-          </thead>
-          <tbody>
-            <% drinks.each do |drink| %>
-              <tr>
-                <td><%= drink[:name] %></td>
-                <td><%= drink[:missing_ingredients].map(&:name).join(', ') %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
+  <% if current_bar %>
+    <% @drinks_missing_hash.each do |missing_count, drinks| %>
+      <% if missing_count == 0 %>
+        <div class="row">
+          <h4>Drinks you can make</h4>
+          <% drinks.each do |drink| %>
+            <p><%= drink[:name] %></p>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="row">
+          <h4>Missing <%= missing_count %> Ingridients</h4>
+          <table class="table">
+            <thead>
+              <th>Name</th>
+              <th>Missing Ingredients</th>
+            </thead>
+            <tbody>
+              <% drinks.each do |drink| %>
+                <tr>
+                  <td><%= drink[:name] %></td>
+                  <td><%= drink[:missing_ingredients].map(&:name).join(', ') %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
     <% end %>
+  <% else %>
+    <p>It looks like you don't have any bars set. Go here to create and set your current bar <%= link_to "Your bars", bars_path %></p>
   <% end %>
 </div>

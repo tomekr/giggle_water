@@ -17,7 +17,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   def current_bar
-    self.bars.find(self.current_bar_id)
+    if self.bars.empty?
+      return nil
+    else
+      self.bars.find(self.current_bar_id)
+    end
   end
 
   def set_current_bar(bar_id)
@@ -39,6 +43,10 @@ class User < ActiveRecord::Base
   end
 
   def makeable_drinks
+    # Return an empty hash if the user doesn't have any bars or somehow the
+    # current bar wasn't set
+    return {} unless self.current_bar
+
     current_ingredients = Set.new(self.current_bar.bar_items.map{|bar_item| bar_item.ingredient})
 
     drinks_hash = {}

@@ -5,6 +5,12 @@ class BarsControllerTest < ActionController::TestCase
     @bar = bars(:one)
   end
 
+  test "created bar should be user's current bar if user's current bar is nil" do
+    #TODO write this test
+    # After a bar is created, that bar should be automatically set as the user's
+    # current_bar_id if they don't currently have a bar set
+  end
+
   test "should get index" do
     get :index
     assert_response :success

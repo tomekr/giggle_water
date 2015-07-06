@@ -28,6 +28,10 @@ class BarsController < ApplicationController
 
     respond_to do |format|
       if @bar.save
+        # Set current_user's current_bar_id to this bar if their current_bar_id
+        # is nil
+
+        current_user.set_current_bar(@bar.id) if current_user.current_bar_id.nil?
         format.html { redirect_to bars_path, notice: 'Bar was successfully created.' }
         format.json { render :show, status: :created, location: @bar }
       else
