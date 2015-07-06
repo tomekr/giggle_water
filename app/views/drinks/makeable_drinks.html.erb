@@ -10,7 +10,7 @@
         </div>
       <% else %>
         <div class="row">
-          <h4>Missing <%= missing_count %> Ingridients</h4>
+          <h4>Missing <%= missing_count %> <%= "Ingredient".pluralize(missing_count) %></h4>
           <table class="table">
             <thead>
               <th>Name</th>
