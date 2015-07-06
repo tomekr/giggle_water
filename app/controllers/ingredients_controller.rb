@@ -4,7 +4,7 @@ class IngredientsController < ApplicationController
   # GET /ingredients
   # GET /ingredients.json
   def index
-    @ingredients = Ingredient.order('drink_items_count DESC').page(params[:page])
+    @ingredients = Ingredient.order('drink_items_count DESC').page(params[:page]).per(50)
   end
 
   # GET /ingredients/1
