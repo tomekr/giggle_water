@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
       missing_ingredients = (drink_ingredients - current_ingredients)
 
       drinks_hash[missing_ingredients.size] ||= []
-      drinks_hash[missing_ingredients.size] << {name: drink.name, missing_ingredients: missing_ingredients.to_a}
+      drinks_hash[missing_ingredients.size] << {name: drink.name, id: drink.id, missing_ingredients: missing_ingredients.to_a}
     end
 
     drinks_hash

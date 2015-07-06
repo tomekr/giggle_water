@@ -4,21 +4,30 @@
       <% if missing_count == 0 %>
         <div class="row">
           <h4>Drinks you can make</h4>
-          <% drinks.each do |drink| %>
-            <p><%= drink[:name] %></p>
-          <% end %>
+          <table class="table table-hover table-bordered">
+            <thead>
+              <th>Name</th>
+            </thead>
+            <tbody>
+              <% drinks.each do |drink| %>
+                <tr data-link="<%= drink_path(drink[:id]) %>">
+                  <td><%= drink[:name] %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
         </div>
       <% else %>
         <div class="row">
           <h4>Missing <%= missing_count %> <%= "Ingredient".pluralize(missing_count) %></h4>
-          <table class="table">
+          <table class="table table-hover table-bordered">
             <thead>
               <th>Name</th>
               <th>Missing Ingredients</th>
             </thead>
             <tbody>
               <% drinks.each do |drink| %>
-                <tr>
+                <tr data-link="<%= drink_path(drink[:id]) %>">
                   <td><%= drink[:name] %></td>
                   <td><%= drink[:missing_ingredients].map(&:name).join(', ') %></td>
                 </tr>
