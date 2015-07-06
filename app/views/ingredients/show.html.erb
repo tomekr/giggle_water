@@ -7,7 +7,9 @@
         <h2><%= @ingredient.name %></h2>
       </div>
       <div class="col-md-1">
-        <%= render 'add_or_in', ingredient: @ingredient %>
+        <% if current_user %>
+          <%= render 'add_or_in', ingredient: @ingredient %>
+        <% end %>
       </div>
     </div>
 

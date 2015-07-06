@@ -61,6 +61,10 @@ class DrinksController < ApplicationController
     end
   end
 
+  def makeable_drinks
+    @drinks_missing_hash = current_user.makeable_drinks.sort_by{|count, _| count}
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_drink

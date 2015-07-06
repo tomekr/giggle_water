@@ -16,7 +16,9 @@
         <% @ingredients.each do |ingredient| %>
           <tr data-link="<%= ingredient_path(ingredient) %>">
             <td>
-              <%= render 'add_or_in', ingredient: ingredient %>
+              <% if current_user %>
+                <%= render 'add_or_in', ingredient: ingredient %>
+              <% end %>
             </td>
             <td>
               <%= ingredient.name %>

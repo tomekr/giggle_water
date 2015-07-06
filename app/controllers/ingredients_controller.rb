@@ -68,7 +68,8 @@ class IngredientsController < ApplicationController
     if bar_item.save
       #TODO redirect to either index or show view depending on where the add
       #button was clicked.
-      redirect_to ingredient_path(@ingredient)
+      #redirect_to ingredient_path(@ingredient)
+      redirect_to ingredients_path
     else
       #TODO throw a flash error and redirect?
     end

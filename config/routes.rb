@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :bars
     post '/bars/:id/make_current', to: 'bars#make_current'
     post '/ingredients/:id/add_to_bar', to: 'ingredients#add_to_bar'
+    get '/drinks/makeable_drinks', to: 'drinks#makeable_drinks'
   end
 
   resources :ingredients
