@@ -58,6 +58,9 @@ class BarsController < ApplicationController
   # DELETE /bars/1
   # DELETE /bars/1.json
   def destroy
+    # If this bar was the current bar, set
+    current_user.set_current_bar(nil) if @bar == current_user.current_bar
+
     @bar.destroy
     respond_to do |format|
       format.html { redirect_to bars_url, notice: 'Bar was successfully destroyed.' }
