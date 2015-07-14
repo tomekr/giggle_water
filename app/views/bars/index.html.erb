@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <div class="container">
   <div class="row">
     <form action="/bars/new" method="link">
@@ -16,7 +14,7 @@
       <thead>
         <tr>
           <th>Name</th>
-          <th colspan="3"></th>
+          <th colspan="4"></th>
         </tr>
       </thead>
 
@@ -24,6 +22,12 @@
         <% @bars.each do |bar| %>
           <tr>
             <td><%= bar.name %></td>
+            <% if bar.current? %>
+              <td><span class="label label-success">current</span></td>
+            <% else %>
+              <td><%= button_to "Make Current", {:controller => :bars, :action => 'make_current', :id => bar.id }, :method => :post%></td>
+            <% end %>
+
             <td><%= link_to 'Show', bar %></td>
             <td><%= link_to 'Edit', edit_bar_path(bar) %></td>
             <td><%= link_to 'Destroy', bar, method: :delete, data: { confirm: 'Are you sure?' } %></td>

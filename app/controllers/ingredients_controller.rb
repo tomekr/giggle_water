@@ -1,10 +1,10 @@
 class IngredientsController < ApplicationController
-  before_action :set_ingredient, only: [:show, :edit, :update, :destroy]
+  before_action :set_ingredient, only: [:show, :edit, :update, :destroy, :add_to_bar]
 
   # GET /ingredients
   # GET /ingredients.json
   def index
-    @ingredients = Ingredient.order('drink_items_count DESC').page(params[:page])
+    @ingredients = Ingredient.order('drink_items_count DESC').page(params[:page]).per(50)
   end
 
   # GET /ingredients/1
@@ -60,6 +60,20 @@ class IngredientsController < ApplicationController
       format.html { redirect_to ingredients_url, notice: 'Ingredient was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def add_to_bar
+    bar_item = current_user.current_bar.bar_items.build(ingredient: @ingredient)
+
+    if bar_item.save
+      #TODO redirect to either index or show view depending on where the add
+      #button was clicked.
+      #redirect_to ingredient_path(@ingredient)
+      redirect_to ingredients_path
+    else
+      #TODO throw a flash error and redirect?
+    end
+
   end
 
   private

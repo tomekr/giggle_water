@@ -1,11 +1,10 @@
-<p id="notice"><%= notice %></p>
-
 <div class="container">
   <div class="row">
     <h2>Listing Ingredients</h1>
-    <table class="table table-hover table-bordered">
+    <table class="table-condensed table-hover table-bordered">
       <thead>
         <tr>
+          <th></th>
           <th>Ingredient</th>
           <th># of Cocktails</th>
         </tr>
@@ -14,7 +13,14 @@
       <tbody>
         <% @ingredients.each do |ingredient| %>
           <tr data-link="<%= ingredient_path(ingredient) %>">
-            <td><%= ingredient.name %></td>
+            <td>
+              <% if current_user %>
+                <%= render 'add_or_in', ingredient: ingredient %>
+              <% end %>
+            </td>
+            <td>
+              <%= ingredient.name %>
+            </td>
             <td><%= ingredient.drink_items_count %></td>
           </tr>
         <% end %>

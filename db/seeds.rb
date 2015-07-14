@@ -37,7 +37,8 @@ end
 puts "Importing Drinks from #{DRINKS_CSV}"
 drinks.each do |drink_name, attributes|
   print "."
-  drink = Drink.new(name: drink_name, glass: attributes[:glass], directions: attributes[:directions])
+  drink = Drink.create(name: drink_name, glass: attributes[:glass], directions: attributes[:directions])
+
 
   attributes[:drink_items].each do |drink_item|
     Ingredient.create(name: drink_item[:name]) unless Ingredient.find_by_name(drink_item[:name])
