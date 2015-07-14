@@ -74,7 +74,6 @@ class DrinksController < ApplicationController
   end
 
   def unfavorite
-    binding.pry
     current_user.favorite_drinks.destroy(current_user.favorite_drinks.where(drink_id: @drink.id))
     respond_to do |format|
       format.html { redirect_to @drink, notice: 'Drink unfavorited' }
