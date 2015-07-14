@@ -74,7 +74,8 @@ class DrinksController < ApplicationController
   end
 
   def unfavorite
-    current_user.favorite_drinks.destroy(current_user.favorite_drinks.where(drink_id: @drink.id))
+    @unfavorite_drink = FavoriteDrink.where(drink_id: @drink.id)
+    current_user.favorite_drinks.destroy(@unfavorite_drink)
     respond_to do |format|
       format.html { redirect_to @drink, notice: 'Drink unfavorited' }
       format.json { head :no_content }
