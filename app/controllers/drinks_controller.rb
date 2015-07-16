@@ -74,11 +74,16 @@ class DrinksController < ApplicationController
   end
 
   def unfavorite
-    @unfavorite_drink = FavoriteDrink.where(drink_id: @drink.id)
-    current_user.favorite_drinks.destroy(@unfavorite_drink)
+    unfavorite_drink = current_user.favorite_drinks.find_by_drink_id(@drink.id) 
+
     respond_to do |format|
-      format.html { redirect_to @drink, notice: 'Drink unfavorited' }
-      format.json { head :no_content }
+      if unfavorite_drink && unfavorite_drink.destroy
+        format.html { redirect_to @drink, notice: 'Drink unfavorited' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to @drink }
+        format.json { render json: @drink.errors, status: :unprocessable_entity }
+      end
     end
   end
     
