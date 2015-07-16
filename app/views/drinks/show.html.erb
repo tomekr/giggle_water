@@ -7,7 +7,11 @@
 <%= link_to 'Edit', edit_drink_path(@drink) %> |
 <%= link_to 'Back', drinks_path %> |
 <% unless current_user.favorite_drinks.exists?(drink_id: @drink.id) %>
-  <%= link_to 'Favorite', favorite_drink_path(@drink), method: :post %>
+  <%= link_to favorite_drink_path(@drink), id: "favorite", method: :post, title: "Favorite"  do %>
+    <span id="favorite" class="glyphicon glyphicon-star-empty"></span>
+  <% end %>
 <% else %>
-  <%= link_to 'Unfavorite', unfavorite_drink_path(@drink), method: :delete %>
+  <%= link_to unfavorite_drink_path(@drink), id: "unfavorite", method: :delete, title: "Unfavorite" do %>
+    <span id=unfavorite" class="glyphicon glyphicon-star"></span>
+  <% end %>
 <% end %>
