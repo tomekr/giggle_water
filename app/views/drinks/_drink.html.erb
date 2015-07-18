@@ -1,19 +1,40 @@
-<h2><%= drink.name %></h2>
+<div class="row">
+  <h2>
+    <%= drink.name %>
 
-<p>
-  <strong>Glass:</strong>
-  <%= drink.glass %>
-</p>
+    <span class="btn-group">
+      <% unless current_user.favorite_drinks.exists?(drink_id: drink.id) %>
+        <%= button_to(favorite_drink_path(drink), method: :post,  class: 'btn btn-large btn-success') do %>
+          <i class='glyphicon glyphicon-star'></i> Favorite
+        <% end %>
+      <% else %>
+        <%= button_to(unfavorite_drink_path(drink), method: :delete, class: 'btn btn-large btn-danger') do %>
+          <i class='glyphicon glyphicon-star-empty'></i> Unfavorite
+        <% end %>
+      <% end %>
+    </span>
+  </h2>
+</div>
 
-<p>
-  <strong>Directions:</strong>
-  <%= drink.directions %>
-</p>
+<div class="row">
+  <p>
+    <strong>Glass:</strong>
+    <%= drink.glass %>
+  </p>
+</div>
 
-<p>
-  <strong>Source:</strong>
-  <%= drink.source %>
-</p>
+<div class="row">
+  <p>
+    <strong>Directions:</strong>
+    <%= drink.directions %>
+  </p>
+</div>
+
+<div class="row">
+  <p>
+    <strong>Source:</strong>
+    <%= drink.source %>
+  </p>
 </div>
 
 <div class="row">

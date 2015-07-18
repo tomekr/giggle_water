@@ -53,6 +53,13 @@ ActiveRecord::Schema.define(version: 20150705193137) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "favorite_drinks", force: :cascade do |t|
+    t.integer  "drink_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "ingredients", force: :cascade do |t|
     t.string   "amount"
     t.string   "use"

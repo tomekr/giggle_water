@@ -11,7 +11,13 @@ Rails.application.routes.draw do
 
   resources :ingredients
   resources :drink_items
-  resources :drinks
+  resources :drinks do
+    member do
+      post :favorite
+      delete :unfavorite
+    end
+  end
+
   root to: 'visitors#index'
   devise_for :users
   resources :users

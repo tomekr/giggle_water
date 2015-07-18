@@ -1,5 +1,5 @@
 class DrinksController < ApplicationController
-  before_action :set_drink, only: [:show, :edit, :update, :destroy]
+  before_action :set_drink, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite]
 
   # GET /drinks
   # GET /drinks.json
@@ -61,6 +61,32 @@ class DrinksController < ApplicationController
     end
   end
 
+  def favorite
+    respond_to do |format|
+      if FavoriteDrink.create(drink_id: @drink.id, user_id: current_user.id)
+        format.html { redirect_to @drink, notice: 'Drink favorited' }
+        format.json { render :show, status: :ok, location: @drink }
+      else
+        format.html { redirect_to @drink }
+        format.json { render json: @drink.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def unfavorite
+    unfavorite_drink = current_user.favorite_drinks.find_by_drink_id(@drink.id) 
+
+    respond_to do |format|
+      if unfavorite_drink && unfavorite_drink.destroy
+        format.html { redirect_to @drink, notice: 'Drink unfavorited' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to @drink }
+        format.json { render json: @drink.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+    
   def makeable_drinks
     @drinks_missing_hash = current_user.makeable_drinks.sort_by{|count, _| count}
   end
