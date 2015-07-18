@@ -27,6 +27,8 @@ class IngredientsController < ApplicationController
   def create
     @ingredient = Ingredient.new(ingredient_params)
 
+    authorize @ingredient
+
     respond_to do |format|
       if @ingredient.save
         format.html { redirect_to @ingredient, notice: 'Ingredient was successfully created.' }
@@ -41,6 +43,8 @@ class IngredientsController < ApplicationController
   # PATCH/PUT /ingredients/1
   # PATCH/PUT /ingredients/1.json
   def update
+    authorize @ingredient
+
     respond_to do |format|
       if @ingredient.update(ingredient_params)
         format.html { redirect_to @ingredient, notice: 'Ingredient was successfully updated.' }
@@ -55,6 +59,8 @@ class IngredientsController < ApplicationController
   # DELETE /ingredients/1
   # DELETE /ingredients/1.json
   def destroy
+    authorize @ingredient
+
     @ingredient.destroy
     respond_to do |format|
       format.html { redirect_to ingredients_url, notice: 'Ingredient was successfully destroyed.' }
