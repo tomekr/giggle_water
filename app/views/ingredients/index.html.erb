@@ -12,14 +12,14 @@
 
       <tbody>
         <% @ingredients.each do |ingredient| %>
-          <tr data-link="<%= ingredient_path(ingredient) %>">
-            <td>
+          <tr>
+            <td id="<%=ingredient.id%>">
               <% if current_user %>
                 <%= render 'add_or_in', ingredient: ingredient %>
               <% end %>
             </td>
             <td>
-              <%= ingredient.name %>
+              <%= link_to ingredient.name, ingredient_path(ingredient) %>
             </td>
             <td><%= ingredient.drink_items_count %></td>
           </tr>

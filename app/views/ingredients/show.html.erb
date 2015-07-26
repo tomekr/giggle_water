@@ -4,7 +4,7 @@
       <div class="col-md-3">
         <h2><%= @ingredient.name %></h2>
       </div>
-      <div class="col-md-1">
+      <div id="<%= @ingredient.id %>" class="col-md-1">
         <% if current_user %>
           <%= render 'add_or_in', ingredient: @ingredient %>
         <% end %>

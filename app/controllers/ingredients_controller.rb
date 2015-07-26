@@ -70,14 +70,17 @@ class IngredientsController < ApplicationController
 
   def add_to_bar
     bar_item = current_user.current_bar.bar_items.build(ingredient: @ingredient)
-
-    if bar_item.save
-      #TODO redirect to either index or show view depending on where the add
-      #button was clicked.
-      #redirect_to ingredient_path(@ingredient)
-      redirect_to ingredients_path
-    else
-      #TODO throw a flash error and redirect?
+    respond_to do |format|
+      if bar_item.save
+        #TODO redirect to either index or show view depending on where the add
+        #button was clicked.
+        #redirect_to ingredient_path(@ingredient)
+        #redirect_to ingredients_path
+        format.html
+        format.js
+      else
+        #TODO throw a flash error and redirect?
+      end
     end
 
   end
