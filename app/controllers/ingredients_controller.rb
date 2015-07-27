@@ -72,14 +72,11 @@ class IngredientsController < ApplicationController
     bar_item = current_user.current_bar.bar_items.build(ingredient: @ingredient)
     respond_to do |format|
       if bar_item.save
-        #TODO redirect to either index or show view depending on where the add
-        #button was clicked.
-        #redirect_to ingredient_path(@ingredient)
-        #redirect_to ingredients_path
-        format.html
+        format.html { redirect_to @ingredient, notice: 'Ingredient was added to bar.' }
         format.js
       else
-        #TODO throw a flash error and redirect?
+        format.html { redirect_to ingredients_path }
+        format.json { render json: @ingredient.errors, status: :unprocessable_entity}
       end
     end
 
