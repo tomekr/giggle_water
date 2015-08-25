@@ -1,5 +1,5 @@
 class IngredientsController < ApplicationController
-  before_action :set_ingredient, only: [:show, :edit, :update, :destroy, :add_to_bar]
+  before_action :set_ingredient, only: [:show, :edit, :update, :destroy, :add_to_bar, :remove_from_bar]
 
   # GET /ingredients
   # GET /ingredients.json
@@ -70,6 +70,7 @@ class IngredientsController < ApplicationController
 
   def add_to_bar
     bar_item = current_user.current_bar.bar_items.build(ingredient: @ingredient)
+
     respond_to do |format|
       if bar_item.save
         format.html { redirect_to @ingredient, notice: 'Ingredient was added to bar.' }
@@ -79,7 +80,6 @@ class IngredientsController < ApplicationController
         format.json { render json: @ingredient.errors, status: :unprocessable_entity}
       end
     end
-
   end
 
   private
