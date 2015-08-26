@@ -8,7 +8,12 @@ Rails.application.routes.draw do
     post '/ingredients/:id/add_to_bar', to: 'ingredients#add_to_bar'
     get '/drinks/makeable_drinks', to: 'drinks#makeable_drinks'
 
-    resources :ingredients
+    resources :ingredients do
+      member do
+        delete :remove_from_bar
+      end
+    end
+
     resources :drink_items
 
     resources :drinks do

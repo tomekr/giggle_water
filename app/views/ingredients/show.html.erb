@@ -6,7 +6,7 @@
       </div>
       <div id="<%= @ingredient.id %>" class="col-md-1">
         <% if current_user %>
-          <%= render 'add_or_in', ingredient: @ingredient %>
+          <%= render 'add_or_remove', ingredient: @ingredient %>
         <% end %>
       </div>
     </div>

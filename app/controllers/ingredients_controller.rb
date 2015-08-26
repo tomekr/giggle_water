@@ -74,11 +74,21 @@ class IngredientsController < ApplicationController
     respond_to do |format|
       if bar_item.save
         format.html { redirect_to @ingredient, notice: 'Ingredient was added to bar.' }
-        format.js
+        format.js { render action: "add_or_remove" }
       else
         format.html { redirect_to ingredients_path }
         format.json { render json: @ingredient.errors, status: :unprocessable_entity}
       end
+    end
+  end
+
+  def remove_from_bar
+    bar_item = current_user.current_bar.bar_items.find_by(ingredient: @ingredient)
+    bar_item.destroy
+    
+    respond_to do |format|
+      format.html { redirect_to @ingredient, notice: 'Ingredient was removed from bar' }
+      format.js { render action: "add_or_remove" }
     end
   end
 
