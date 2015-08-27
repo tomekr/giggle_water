@@ -5,11 +5,11 @@ Rails.application.routes.draw do
     resources :bar_items
     resources :bars
     post '/bars/:id/make_current', to: 'bars#make_current'
-    post '/ingredients/:id/add_to_bar', to: 'ingredients#add_to_bar'
     get '/drinks/makeable_drinks', to: 'drinks#makeable_drinks'
 
     resources :ingredients do
       member do
+        post :add_to_bar
         delete :remove_from_bar
       end
     end
