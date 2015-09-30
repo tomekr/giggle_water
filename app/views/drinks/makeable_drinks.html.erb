@@ -19,21 +19,35 @@
         </div>
       <% else %>
         <div class="row">
-          <h4>Missing <%= missing_count %> <%= "Ingredient".pluralize(missing_count) %></h4>
-          <table class="table table-hover table-bordered">
-            <thead>
-              <th>Name</th>
-              <th>Missing Ingredients</th>
-            </thead>
-            <tbody>
-              <% drinks.each do |drink| %>
-                <tr data-link="<%= drink_path(drink[:id]) %>">
-                  <td><%= drink[:name] %></td>
-                  <td><%= drink[:missing_ingredients].map(&:name).join(', ') %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
+          <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="heading<%= missing_count.to_s %>">
+                <h4 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= missing_count.to_s %>" aria-expanded="false" aria-controls="collapse<%= missing_count.to_s %>">
+                    <h4>Missing <%= missing_count %> <%= "Ingredient".pluralize(missing_count) %></h4>
+                  </a>
+                </h4>
+              </div>
+              <div id="collapse<%= missing_count.to_s %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= missing_count.to_s %>">
+                <div class="panel-body">
+                  <table class="table table-hover table-bordered">
+                    <thead>
+                      <th>Name</th>
+                      <th>Missing Ingredients</th>
+                    </thead>
+                    <tbody>
+                      <% drinks.each do |drink| %>
+                        <tr data-link="<%= drink_path(drink[:id]) %>">
+                          <td><%= drink[:name] %></td>
+                          <td><%= drink[:missing_ingredients].map(&:name).join(', ') %></td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       <% end %>
     <% end %>
