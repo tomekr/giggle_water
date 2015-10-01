@@ -2,7 +2,7 @@ require 'test_helper'
 
 class DrinksControllerTest < ActionController::TestCase
   setup do
-    @drink = drinks(:one)
+    @drink = drinks(:last_word)
   end
 
   test "should get index" do

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class IngredientsControllerTest < ActionController::TestCase
   setup do
-    @ingredient = ingredients(:one)
+    @ingredient = ingredients(:tanqueray)
   end
 
   test "should get index" do
@@ -18,7 +18,7 @@ class IngredientsControllerTest < ActionController::TestCase
 
   test "should create ingredient" do
     assert_difference('Ingredient.count') do
-      post :create, ingredient: {  }
+      post :create, ingredient: { :ingredient => @ingredient }
     end
 
     assert_redirected_to ingredient_path(assigns(:ingredient))
