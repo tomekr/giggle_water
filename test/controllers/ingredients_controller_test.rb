@@ -3,6 +3,7 @@ require 'test_helper'
 class IngredientsControllerTest < ActionController::TestCase
   setup do
     @ingredient = ingredients(:tanqueray)
+    sign_in users (:bob)
   end
 
   test "should get index" do

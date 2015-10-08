@@ -3,7 +3,7 @@ require 'test_helper'
 class BarsControllerTest < ActionController::TestCase
   setup do
     @bar = bars(:one)
-    sign_in users(:bob), @user
+    sign_in users(:bob)
   end
 
   test "created bar should be user's current bar if user's current bar is nil" do
