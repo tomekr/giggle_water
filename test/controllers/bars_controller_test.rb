@@ -3,6 +3,7 @@ require 'test_helper'
 class BarsControllerTest < ActionController::TestCase
   setup do
     @bar = bars(:one)
+    sign_in users(:bob), @user
   end
 
   test "created bar should be user's current bar if user's current bar is nil" do
@@ -27,7 +28,7 @@ class BarsControllerTest < ActionController::TestCase
       post :create, bar: { name: @bar.name }
     end
 
-    assert_redirected_to bar_path(assigns(:bar))
+    assert_redirected_to bars_path
   end
 
   test "should show bar" do
