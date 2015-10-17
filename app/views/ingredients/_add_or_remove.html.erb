@@ -1,7 +1,7 @@
 <% if current_bar %>
   <% if current_bar.bar_items.find_by_ingredient_id(ingredient.id) %>
-    <%= button_to "Remove", {:controller => :ingredients, :action => 'remove_from_bar', :id => ingredient.id }, :method => :delete, remote: true %>
+    <%= button_to "Remove", {:controller => :ingredients, :action => 'remove_from_bar', :id => ingredient.id }, :class => 'btn btn-danger', :method => :delete, remote: true %>
   <% else %>
-    <%= button_to "Add", {:controller => :ingredients, :action => 'add_to_bar', :id => ingredient.id }, :method => :post, remote: true %>
+    <%= button_to "Add", {:controller => :ingredients, :action => 'add_to_bar', :id => ingredient.id }, :class => 'btn btn-success', :method => :post, remote: true %>
   <% end %>
 <% end %>
