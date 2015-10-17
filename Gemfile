@@ -18,6 +18,8 @@ group :development do
   gem 'better_errors'
   gem 'quiet_assets'
   gem 'rails_layout'
+  gem 'guard'
+  gem 'guard-brakeman'
 end
 
 group :development, :test do
