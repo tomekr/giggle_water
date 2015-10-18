@@ -2,7 +2,7 @@ require 'test_helper'
 
 class IngredientsControllerTest < ActionController::TestCase
   setup do
-    @ingredient = ingredients(:one)
+    @ingredient = ingredients(:green_chartreuse)
   end
 
   test "should get index" do
