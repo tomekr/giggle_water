@@ -11,7 +11,7 @@ namespace :brakeman do
   desc "Check your code with Brakeman"
   task :check do
     require 'brakeman'
-    result = Brakeman.run app_path: '.', print_report: true, url_safe_methods: ["find"]
+    result = Brakeman.run app_path: '.', print_report: true
 
     # TODO: There are some false positives that are going to take a bit of time
     # to get pushed to master so I'm manually filtering them here. This should
