@@ -28,6 +28,7 @@ group :development, :test do
   gem 'spring'
   gem 'pry-rails'
   gem 'pry-rescue'
+  gem 'bundler-audit'
 end
 
 group :production do
