@@ -39,6 +39,8 @@ main {
   padding-bottom: 80px;
   width: 100%;
   margin-top: 51px; // accommodate the navbar
+  // add a bit of padding to the main section to seperate it from the navbar
+  padding-top: 10px; 
   }
 section {
   @extend .row;
