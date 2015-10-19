@@ -13,6 +13,8 @@ gem 'devise'
 gem 'high_voltage'
 gem 'pundit'
 
+gem "twitter-bootstrap-rails"
+
 group :development do
   gem 'sqlite3'
   gem 'better_errors'
