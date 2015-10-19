@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <h3>Favorite Drinks</h3>
+    <table class="table table-bordered table-hover">
+      <thead>
+        <th>Name</th>
+        <th>Glass</th>
+        <th>Directions</th>
+      </thead>
+      <tbody>
+        <% @favorite_drinks.each do |drink| %>
+          <tr data-link="<%= drink_path(drink) %>">
+            <td><%= drink.name %></td>
+            <td><%= drink.glass %></td>
+            <td><%= drink.directions %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
