@@ -9,7 +9,13 @@ Rails.application.routes.draw do
     get '/drinks/makeable_drinks', to: 'drinks#makeable_drinks', as: 'makeable_drinks'
     get '/drinks/favorites', to: 'drinks#favorites', as: 'favorite_drinks'
 
-    resources :ingredients
+    resources :ingredients do
+      member do
+        post :add_to_bar
+        delete :remove_from_bar
+      end
+    end
+
     resources :drink_items
 
     resources :drinks do

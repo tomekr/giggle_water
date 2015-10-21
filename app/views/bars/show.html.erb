@@ -12,7 +12,7 @@
     </thead>
       <% @bar.bar_items.each do |bar_item| %>
         <tr>
-          <td>bar_item.ingredient.name</td>
+          <td><%= bar_item.ingredient.name %></td>
         </tr>
       <% end %>
     </table>

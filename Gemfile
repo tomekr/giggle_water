@@ -12,6 +12,7 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'high_voltage'
 gem 'pundit'
+gem 'unobtrusive_flash', '>=3'
 
 gem "twitter-bootstrap-rails"
 
