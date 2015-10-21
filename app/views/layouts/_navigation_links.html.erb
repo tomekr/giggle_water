@@ -1,6 +1,7 @@
 <%# add navigation links to this file %>
-<li><%= link_to 'About', page_path('about') %></li>
 <li><%= link_to 'Drinks', drinks_path %></li>
+<li><%= link_to 'What I Can Make', makeable_drinks_path %></li>
+<li><%= link_to 'Favorites', favorite_drinks_path %></li>
 <li><%= link_to 'Ingredients', ingredients_path %></li>
 <li><%= link_to 'Bars', bars_path %></li>
 <% if user_signed_in? %>

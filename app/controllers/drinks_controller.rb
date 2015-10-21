@@ -67,6 +67,10 @@ class DrinksController < ApplicationController
     end
   end
 
+  def favorites
+    @favorite_drinks = current_user.favorites
+  end
+
   def favorite
     respond_to do |format|
       if FavoriteDrink.create(drink_id: @drink.id, user_id: current_user.id)
@@ -92,7 +96,7 @@ class DrinksController < ApplicationController
       end
     end
   end
-    
+
   def makeable_drinks
     @drinks_missing_hash = current_user.makeable_drinks.sort_by{|count, _| count}
   end

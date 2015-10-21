@@ -1,17 +1,6 @@
 <div class="container">
-
-  <% if current_user.admin? %>
-    <div class="row">
-      <form action="/drinks/new" method="link">
-        <button type="submit" class="btn btn-primary">
-          <span class="glyphicon glyphicon-plus" ></span> Create Drink
-        </button>
-      </form>
-    </div>
-  <% end %>
-
   <div class="row">
-    <h3>Drinks</h3>
+    <h3>Favorite Drinks</h3>
     <table class="table table-bordered table-hover">
       <thead>
         <th>Name</th>
@@ -19,7 +8,7 @@
         <th>Directions</th>
       </thead>
       <tbody>
-        <% @drinks.each do |drink| %>
+        <% @favorite_drinks.each do |drink| %>
           <tr data-link="<%= drink_path(drink) %>">
             <td><%= drink.name %></td>
             <td><%= drink.glass %></td>
@@ -28,6 +17,5 @@
         <% end %>
       </tbody>
     </table>
-    <p><%= paginate @drinks %></p>
   </div>
 </div>

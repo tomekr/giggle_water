@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     resources :bar_items
     resources :bars
     post '/bars/:id/make_current', to: 'bars#make_current'
-    get '/drinks/makeable_drinks', to: 'drinks#makeable_drinks'
+    post '/ingredients/:id/add_to_bar', to: 'ingredients#add_to_bar'
+    get '/drinks/makeable_drinks', to: 'drinks#makeable_drinks', as: 'makeable_drinks'
+    get '/drinks/favorites', to: 'drinks#favorites', as: 'favorite_drinks'
 
     resources :ingredients do
       member do
