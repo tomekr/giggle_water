@@ -15,15 +15,13 @@
     <table class="table table-bordered table-hover">
       <thead>
         <th>Name</th>
-        <th>Glass</th>
-        <th>Directions</th>
+        <th>Ingredients</th>
       </thead>
       <tbody>
         <% @drinks.each do |drink| %>
           <tr data-link="<%= drink_path(drink) %>">
             <td><%= drink.name %></td>
-            <td><%= drink.glass %></td>
-            <td><%= drink.directions %></td>
+            <td><%= render 'minimal_drink', drink: drink %></td>
           </tr>
         <% end %>
       </tbody>
