@@ -92,9 +92,9 @@ class DrinksController < ApplicationController
       end
     end
   end
-    
+  
   def makeable_drinks
-    @drinks_missing_hash = current_user.makeable_drinks.sort_by{|count, _| count}
+    @drinks_missing_hash = current_user.makeable_drinks(3).sort_by{|count, _| count}
   end
 
   private
