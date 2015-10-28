@@ -1,34 +1,27 @@
 <div class="container">
 
-  <div class="row">
-    <div class="col-md-4">
-      <div class="column">
-        <form action="/drinks/new" method="link">
-          <button type="submit" class="btn btn-primary">
-            <span class="glyphicon glyphicon-plus" ></span> Create Drink
-          </button>
-        </form>
-      </div>
-      <div class="column">
-        <a href="/drinks/makeable_drinks">Show me drinks I can make</a>
-      </div>
+  <% if current_user.admin? %>
+    <div class="row">
+      <form action="/drinks/new" method="link">
+        <button type="submit" class="btn btn-primary">
+          <span class="glyphicon glyphicon-plus" ></span> Create Drink
+        </button>
+      </form>
     </div>
-  </div>
+  <% end %>
 
   <div class="row">
     <h3>Drinks</h3>
     <table class="table table-bordered table-hover">
       <thead>
         <th>Name</th>
-        <th>Glass</th>
-        <th>Directions</th>
+        <th>Ingredients</th>
       </thead>
       <tbody>
         <% @drinks.each do |drink| %>
           <tr data-link="<%= drink_path(drink) %>">
             <td><%= drink.name %></td>
-            <td><%= drink.glass %></td>
-            <td><%= drink.directions %></td>
+            <td><%= render 'minimal_drink', drink: drink %></td>
           </tr>
         <% end %>
       </tbody>

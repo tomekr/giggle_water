@@ -38,20 +38,21 @@
 </div>
 
 <div class="row">
-<h3>Ingredients</h3>
-<table class="table">
-  <thead>
-    <th>Name</th>
-    <th>Amount</th>
-    <th>Use</th>
-  </thead>
-  <tbody>
-    <% drink.drink_items.order("ingredient_use asc").each do |drink_item| %>
-      <tr>
-        <td><%= drink_item.ingredient.name %></td>
-        <td><%= drink_item.amount %></td>
-        <td><%= drink_item.ingredient_use %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <h3>Ingredients</h3>
+  <table class="table">
+    <thead>
+      <th>Name</th>
+      <th>Amount</th>
+      <th>Use</th>
+    </thead>
+    <tbody>
+      <% drink.drink_items.order("ingredient_use asc").each do |drink_item| %>
+        <tr>
+          <td><%= drink_item.ingredient.name %></td>
+          <td><%= drink_item.amount %></td>
+          <td><%= drink_item.ingredient_use %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

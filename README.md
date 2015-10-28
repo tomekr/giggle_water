@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/tomekr/giggle_water.svg?branch=master)](https://travis-ci.org/tomekr/giggle_water)
+
 ![Giggle Water](https://github.com/tomekr/giggle_water/blob/master/public/giggle.jpg)
 
 Giggle Water
