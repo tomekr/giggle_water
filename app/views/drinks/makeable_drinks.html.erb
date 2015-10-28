@@ -48,7 +48,12 @@
                   <% drinks.each do |drink| %>
                     <tr data-link="<%= drink_path(drink[:id]) %>">
                       <td><%= drink[:name] %></td>
-                      <td><%= drink[:missing_ingredients].map(&:name).join(', ') %></td>
+                      <td>
+                        <ul 
+                        <% drink[:missing_ingredients].map do |missing_ingredient| %>
+                          <%= button_to missing_ingredient.name, {:controller => :ingredients, :action => 'add_to_bar', :id => missing_ingredient.id }, :class => 'btn btn-sm btn-success', :method => :post, remote: true %> 
+                        <% end %>
+                      </td>
                     </tr>
                   <% end %>
                 </tbody>
