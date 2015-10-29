@@ -49,9 +49,12 @@
                     <tr data-link="<%= drink_path(drink[:id]) %>">
                       <td><%= drink[:name] %></td>
                       <td>
+                        <div class="btn-group">
                         <% drink[:missing_ingredients].map do |missing_ingredient| %>
-                          <%= button_to missing_ingredient.name, {:controller => :ingredients, :action => 'add_to_bar', :id => missing_ingredient.id }, :class => 'btn btn-block btn-sm btn-info missing-button', :method => :post, remote: true %> 
-                        <% end %>
+                            <button class="btn btn-block btn-sm btn-default missing-button"><%= missing_ingredient.name %></button>
+                            <%= button_to 'Add', {:controller => :ingredients, :action => 'add_to_bar', :id => missing_ingredient.id }, :class => 'btn btn-block btn-sm btn-success missing-button', :method => :post, remote: true %>
+                          <% end %>
+                        </div>
                       </td>
                     </tr>
                   <% end %>
