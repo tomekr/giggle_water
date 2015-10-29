@@ -51,13 +51,12 @@
                       <td>
                         <div class="btn-group">
                           <% drink[:missing_ingredients].map do |missing_ingredient| %>
-                            <button class="btn btn-block dropdown-toggle btn-sm btn-default missing-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <%= missing_ingredient.name %> <span class="caret"></span>
+                            <button class="btn btn-sm btn-default missing-button" >
+                              <%= missing_ingredient.name %>
                             </button>
-                            <ul class="dropdown-menu">
-                              <li><a href="#">Add Ingredient</a></li>
-                            </ul>
-                            <%# button_to 'Add', {:controller => :ingredients, :action => 'add_to_bar', :id => missing_ingredient.id }, :class => 'btn btn-block btn-sm btn-success missing-button', :method => :post, remote: true %>
+                            <%= link_to (url_for({:controller => "ingredients", :action => 'add_to_bar', :id => missing_ingredient.id })), :method => :post, remote: true do %>
+                              <span class="btn btn-sm btn-success missing-button">ADD</span>
+                            <% end %>
                           <% end %>
                         </div>
                       </td>
