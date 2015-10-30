@@ -46,9 +46,15 @@
                 </thead>
                 <tbody>
                   <% drinks.each do |drink| %>
-                    <tr data-link="<%= drink_path(drink[:id]) %>">
-                      <td><%= drink[:name] %></td>
-                      <td><%= drink[:missing_ingredients].map(&:name).join(', ') %></td>
+                    <tr>
+                      <td data-link="<%= drink_path(drink[:id]) %>"><%= drink[:name] %></td>
+                      <td>
+                          <% drink[:missing_ingredients].map do |missing_ingredient| %>
+                            <%= button_to(add_to_bar_ingredient_path(missing_ingredient), method: :post,  class: 'btn btn-sm btn-success') do %>
+                              <i class='glyphicon glyphicon-plus-sign'></i>  <%= missing_ingredient.name  %>
+                            <% end %>
+                          <% end %>
+                      </td>
                     </tr>
                   <% end %>
                 </tbody>

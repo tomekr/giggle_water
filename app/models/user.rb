@@ -44,7 +44,8 @@ class User < ActiveRecord::Base
 
     makeable_drinks
   end
-# default to nil, value will come from controller
+
+  # default to nil, value will come from controller
   def makeable_drinks(missing_count=nil)
     # Return an empty hash if the user doesn't have any bars or somehow the
     # current bar wasn't set
@@ -58,7 +59,7 @@ class User < ActiveRecord::Base
       drink_ingredients = Set.new(drink.drink_items.map{|drink_item| drink_item.ingredient})
 
       missing_ingredients = (drink_ingredients - current_ingredients)
-      
+
       if missing_count
         if missing_ingredients.size <= missing_count
           drinks_hash[missing_ingredients.size] ||= []

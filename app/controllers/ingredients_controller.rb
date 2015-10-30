@@ -73,6 +73,7 @@ class IngredientsController < ApplicationController
 
     respond_to do |format|
       if bar_item.save
+        format.html { redirect_to request.referrer, notice: 'Ingredient was successfully added.' }
         format.js { render action: "add_or_remove", locals: { message: "Added to bar!" } }
       else
         format.json { render json: @ingredient.errors, status: :unprocessable_entity}
