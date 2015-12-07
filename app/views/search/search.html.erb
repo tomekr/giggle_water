@@ -1,0 +1,48 @@
+</div><h2> Your Results: </h2>
+<div class="container">
+  <div class="row">
+    <h3>Drinks</h3>
+    <table class="table table-bordered table-hover">
+      <thead>
+        <th>Name</th>
+        <th>Ingredients</th>
+      </thead>
+      <tbody>
+        <% @drink_results.each do |drink| %>
+          <tr data-link="<%= drink_path(drink) %>">
+            <td><%= drink.name %></td>
+            <td><%= render 'drinks/minimal_drink', drink: drink %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <h2>Listing Ingredients</h1>
+    <table class="table-condensed table-hover table-bordered">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Ingredient</th>
+          <th># of Cocktails</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @ingredient_results.each do |ingredient| %>
+          <tr>
+            <td id="<%=ingredient.id%>">
+            </td>
+            <td>
+              <%= link_to ingredient.name, ingredient_path(ingredient) %>
+            </td>
+            <td><%= ingredient.drink_items_count %></td>
+
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

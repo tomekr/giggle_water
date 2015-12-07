@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     post '/ingredients/:id/add_to_bar', to: 'ingredients#add_to_bar'
     get '/drinks/makeable_drinks', to: 'drinks#makeable_drinks', as: 'makeable_drinks'
     get '/drinks/favorites', to: 'drinks#favorites', as: 'favorite_drinks'
+    get '/search', to: 'search#search'
 
     resources :ingredients do
       member do
