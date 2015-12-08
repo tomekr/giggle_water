@@ -1,4 +1,4 @@
-</div><h2> Your Results: </h2>
+<h2>Your Results:</h2>
 <div class="container">
   <div class="row">
     <h3>Drinks</h3>
@@ -17,8 +17,6 @@
       </tbody>
     </table>
   </div>
-</div>
-<div class="container">
   <div class="row">
     <h2>Listing Ingredients</h1>
     <table class="table-condensed table-hover table-bordered">
@@ -34,6 +32,9 @@
         <% @ingredient_results.each do |ingredient| %>
           <tr>
             <td id="<%=ingredient.id%>">
+              <% if current_user %>
+                <%= render 'ingredients/add_or_remove', ingredient: ingredient %>
+              <% end %>
             </td>
             <td>
               <%= link_to ingredient.name, ingredient_path(ingredient) %>
