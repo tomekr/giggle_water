@@ -13,13 +13,12 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <%= render 'layouts/navigation_links' %>
-        <li>
-        <%= form_tag({:controller => "search", :action => "search"}, :method => "get", id: "search-form") do %>
-          <%= text_field_tag :search, params[:search], placeholder: "Search" %>
-          <%= submit_tag "Search", :name => nil %>
-        <% end %>
-        </li>
       </ul>
+      <%= form_tag({:controller => "search", :action => "search"},
+                    :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+        <%= submit_tag "Search", :name => nil %>
+      <% end %>
     </div>
   </div>
 </nav>
