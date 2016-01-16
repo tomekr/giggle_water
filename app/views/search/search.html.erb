@@ -1,48 +1,69 @@
-<h2>Your Results:</h2>
 <div class="container">
-  <div class="row">
-    <h3>Drinks</h3>
-    <table class="table table-bordered table-hover">
-      <thead>
-        <th>Name</th>
-        <th>Ingredients</th>
-      </thead>
-      <tbody>
-        <% @drink_results.each do |drink| %>
-          <tr data-link="<%= drink_path(drink) %>">
-            <td><%= drink.name %></td>
-            <td><%= render 'drinks/minimal_drink', drink: drink %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-  <div class="row">
-    <h2>Listing Ingredients</h1>
-    <table class="table-condensed table-hover table-bordered">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Ingredient</th>
-          <th># of Cocktails</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @ingredient_results.each do |ingredient| %>
-          <tr>
-            <td id="<%=ingredient.id%>">
-              <% if current_user %>
-                <%= render 'ingredients/add_or_remove', ingredient: ingredient %>
+  <h2>Your Results for "<%= params[:search] %>"</h2>
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingOne">
+        <h4 class="panel-title">
+          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Drink Results
+          </a>
+        </h4>
+      </div>
+      <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <th>Name</th>
+              <th>Ingredients</th>
+            </thead>
+            <tbody>
+              <% @drink_results.each do |drink| %>
+                <tr data-link="<%= drink_path(drink) %>">
+                  <td><%= drink.name %></td>
+                  <td><%= render 'drinks/minimal_drink', drink: drink %></td>
+                </tr>
               <% end %>
-            </td>
-            <td>
-              <%= link_to ingredient.name, ingredient_path(ingredient) %>
-            </td>
-            <td><%= ingredient.drink_items_count %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingTwo">
+        <h4 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Ingredient Results
+          </a>
+        </h4>
+      </div>
+      <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+
+        <table class="table-condensed table-hover table-bordered">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Ingredient</th>
+              <th># of Cocktails</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @ingredient_results.each do |ingredient| %>
+              <tr>
+                <td id="<%=ingredient.id%>">
+                  <% if current_user %>
+                    <%= render 'ingredients/add_or_remove', ingredient: ingredient %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to ingredient.name, ingredient_path(ingredient) %>
+                </td>
+                <td><%= ingredient.drink_items_count %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
