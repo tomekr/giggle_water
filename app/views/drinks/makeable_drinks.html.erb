@@ -1,43 +1,71 @@
 <div class="container">
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <% if current_bar %>
     <% @drinks_missing_hash.each do |missing_count, drinks| %>
       <% if missing_count == 0 %>
-        <div class="row">
-          <h4>Drinks you can make</h4>
-          <table class="table table-hover table-bordered">
-            <thead>
-              <th>Name</th>
-            </thead>
-            <tbody>
-              <% drinks.each do |drink| %>
-                <tr data-link="<%= drink_path(drink[:id]) %>">
-                  <td><%= drink[:name] %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="heading<%= missing_count.to_s %>">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= missing_count.to_s %>" aria-expanded="true" aria-controls="collapse<%= missing_count.to_s %>">
+                Drinks you can make
+              </a>
+            </h4>
+          </div>
+          <div id="collapse<%= missing_count.to_s %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading<%= missing_count.to_s %>">
+            <div class="panel-body">
+              <table class="table table-hover table-bordered">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  <% drinks.each do |drink| %>
+                    <tr data-link="<%= drink_path(drink[:id]) %>">
+                      <td><%= drink[:name] %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       <% else %>
-        <div class="row">
-          <h4>Missing <%= missing_count %> <%= "Ingredient".pluralize(missing_count) %></h4>
-          <table class="table table-hover table-bordered">
-            <thead>
-              <th>Name</th>
-              <th>Missing Ingredients</th>
-            </thead>
-            <tbody>
-              <% drinks.each do |drink| %>
-                <tr data-link="<%= drink_path(drink[:id]) %>">
-                  <td><%= drink[:name] %></td>
-                  <td><%= drink[:missing_ingredients].map(&:name).join(', ') %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="heading<%= missing_count.to_s %>">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= missing_count.to_s %>" aria-expanded="false" aria-controls="collapse<%= missing_count.to_s %>">
+                Missing <%= missing_count %> <%= "Ingredient".pluralize(missing_count) %>
+              </a>
+            </h4>
+          </div>
+          <div id="collapse<%= missing_count.to_s %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= missing_count.to_s %>">
+            <div class="panel-body">
+              <table class="table table-hover table-bordered">
+                <thead>
+                  <th>Name</th>
+                  <th>Missing Ingredients</th>
+                </thead>
+                <tbody>
+                  <% drinks.each do |drink| %>
+                    <tr>
+                      <td data-link="<%= drink_path(drink[:id]) %>"><%= drink[:name] %></td>
+                      <td>
+                          <% drink[:missing_ingredients].map do |missing_ingredient| %>
+                            <%= button_to(add_to_bar_ingredient_path(missing_ingredient), method: :post,  class: 'btn btn-sm btn-success') do %>
+                              <i class='glyphicon glyphicon-plus-sign'></i>  <%= missing_ingredient.name  %>
+                            <% end %>
+                          <% end %>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       <% end %>
     <% end %>
   <% else %>
     <p>It looks like you don't have any bars set. Go here to create and set your current bar <%= link_to "Your bars", bars_path %></p>
   <% end %>
+  </div>
 </div>

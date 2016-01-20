@@ -1,3 +1,4 @@
+<div  class="unobtrusive-flash-container ingredient-index-flash"></div>
 <div class="container">
   <div class="row">
     <h2>Listing Ingredients</h1>
@@ -12,16 +13,17 @@
 
       <tbody>
         <% @ingredients.each do |ingredient| %>
-          <tr data-link="<%= ingredient_path(ingredient) %>">
-            <td>
+          <tr>
+            <td id="<%=ingredient.id%>">
               <% if current_user %>
-                <%= render 'add_or_in', ingredient: ingredient %>
+                <%= render 'add_or_remove', ingredient: ingredient %>
               <% end %>
             </td>
             <td>
-              <%= ingredient.name %>
+              <%= link_to ingredient.name, ingredient_path(ingredient) %>
             </td>
             <td><%= ingredient.drink_items_count %></td>
+
           </tr>
         <% end %>
       </tbody>

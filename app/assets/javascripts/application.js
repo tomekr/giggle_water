@@ -12,11 +12,16 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require unobtrusive_flash
+//= require unobtrusive_flash_bootstrap
 //= require bootstrap-sprockets
 //= require_tree .
 
 jQuery(function($) {
   $("tr[data-link]").click(function() {
+    window.location = this.dataset.link
+  });
+  $("td[data-link]").click(function() {
     window.location = this.dataset.link
   });
 })

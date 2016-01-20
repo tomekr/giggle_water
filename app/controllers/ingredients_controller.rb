@@ -1,5 +1,5 @@
 class IngredientsController < ApplicationController
-  before_action :set_ingredient, only: [:show, :edit, :update, :destroy, :add_to_bar]
+  before_action :set_ingredient, only: [:show, :edit, :update, :destroy, :add_to_bar, :remove_from_bar]
 
   # GET /ingredients
   # GET /ingredients.json
@@ -71,15 +71,24 @@ class IngredientsController < ApplicationController
   def add_to_bar
     bar_item = current_user.current_bar.bar_items.build(ingredient: @ingredient)
 
-    if bar_item.save
-      #TODO redirect to either index or show view depending on where the add
-      #button was clicked.
-      #redirect_to ingredient_path(@ingredient)
-      redirect_to ingredients_path
-    else
-      #TODO throw a flash error and redirect?
+    respond_to do |format|
+      if bar_item.save
+        format.html { redirect_to request.referrer, notice: 'Ingredient was successfully added.' }
+        format.js { render action: "add_or_remove", locals: { message: "Added to bar!" } }
+      else
+        format.json { render json: @ingredient.errors, status: :unprocessable_entity}
+      end
     end
+  end
 
+  def remove_from_bar
+    bar_item = current_user.current_bar.bar_items.find_by(ingredient: @ingredient)
+    bar_item.destroy
+    
+    respond_to do |format|
+      format.html { redirect_to @ingredient, notice: 'Ingredient was removed from bar' }
+      format.js { render action: "add_or_remove" , locals: { message: "Removed from bar!"} }
+    end
   end
 
   private

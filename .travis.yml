@@ -1,0 +1,17 @@
+language: ruby
+rvm:
+ - "2.2.2"
+
+bundler_args: --without production
+
+script:
+  - bundle exec rake brakeman:check
+  - bundle exec rake bundler:audit
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rake db:test:prepare
+  - bundle exec rake
+
+before_script:
+  - cp config/database.travis.yml config/database.yml
+# uncomment this line if your project needs to run something other than `rake`:
+# script: bundle exec rspec spec

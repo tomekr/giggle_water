@@ -1,0 +1,10 @@
+<table >
+  <tbody>
+    <% drink.drink_items.order("ingredient_use asc").select{|d| d.ingredient_use == "Build"}.each do |drink_item| %>
+      <tr>
+        <td><%= drink_item.amount %></td>
+        <td class="ingredient-condensed"><%= drink_item.ingredient.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

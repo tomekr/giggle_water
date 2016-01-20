@@ -1,33 +1,52 @@
-<%= form_for(@drink) do |f| %>
-  <% if @drink.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@drink.errors.count, "error") %> prohibited this drink from being saved:</h2>
+<%= form_for @drink, :html => { :class => "form-horizontal drink" } do |f| %>
 
-      <ul>
-      <% @drink.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <% if @drink.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@drink.errors.count, "error") %> prohibited this drink from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @drink.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+    <%= error_span(@drink[:name]) %>
   </div>
-  <div class="form-group">
-    <%= f.label :glass %><br>
-    <%= f.text_field :glass %>
+  <div class="control-group">
+    <%= f.label :glass, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :glass, :class => 'form-control' %>
+    </div>
+    <%= error_span(@drink[:glass]) %>
   </div>
-  <div class="form-group">
-    <%= f.label :directions %><br>
-    <%= f.text_area :directions %>
+  <div class="control-group">
+    <%= f.label :directions, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :directions, :class => 'form-control' %>
+    </div>
+    <%= error_span(@drink[:directions]) %>
   </div>
-  <div class="form-group">
-    <%= f.label :source %><br>
-    <%= f.text_field :source %>
+  <div class="control-group">
+    <%= f.label :source, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :source, :class => 'form-control' %>
+    </div>
+    <%= error_span(@drink[:source]) %>
   </div>
-  <div class="actions">
-    <%= f.submit class: "btn btn-primary" %>
-  </div>
+
+
+  <%= f.submit nil, :class => 'top-buffer btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            drinks_path, :class => 'top-buffer btn btn-default' %>
+
 <% end %>
