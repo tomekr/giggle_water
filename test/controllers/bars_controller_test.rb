@@ -2,10 +2,10 @@ require 'test_helper'
 
 class BarsControllerTest < ActionController::TestCase
   setup do
-    @bar = bars(:one)
     @user = users(:bob)
     sign_in users(:bob)
-    @user.bars << @bar
+    @bar = bars(:one)
+    @user.bars << @bar && @user.set_current_bar(@bar.id)
   end
 
   test "created bar should be user's current bar if user's current bar is nil" do
@@ -15,7 +15,7 @@ class BarsControllerTest < ActionController::TestCase
   end
 
   test "should get index" do
-    get :index
+    get :index, id: @bar
     assert_response :success
     assert_not_nil assigns(:bars)
   end
@@ -34,8 +34,7 @@ class BarsControllerTest < ActionController::TestCase
   end
 
   test "should show bar" do
-    binding.pry
-    get :show, id: @current_bar
+    get :show, id: @bar
     assert_response :success
   end
 
