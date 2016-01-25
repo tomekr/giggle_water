@@ -9,7 +9,7 @@ class SearchController < ApplicationController
   end
   
   def ingredient_search(search)
-    Ingredient.where("name LIKE ?", "%#{search}")
+    Ingredient.where("name LIKE ?", "%#{search}%")
   end
 
   def drink_search(search)
