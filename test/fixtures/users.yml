@@ -5,8 +5,5 @@
 # below each fixture, per the syntax in the comments below
 #
 bob:
+  name: Robert Robertson
   email: bob@example.com
-# column: value
-#
-#two: {}
-#  column: value
