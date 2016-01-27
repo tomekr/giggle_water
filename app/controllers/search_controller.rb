@@ -1,6 +1,7 @@
 class SearchController < ApplicationController
   def search
-    @drink_results = drink_search(params[:search])
+    @drink_results = drink_name_search(params[:search])
+    @drinks_with_ingredient = joined_drink_search(params[:search])
     @ingredient_results = ingredient_search(params[:search])
   end
 
@@ -9,16 +10,10 @@ class SearchController < ApplicationController
   end
   
   def ingredient_search(search)
-    Ingredient.where("name LIKE ?", "%#{search}")
+    Ingredient.where("name LIKE ?", "%#{search}%")
   end
 
-  def drink_search(search)
-    drink_results = drink_name_search(search)
-    ingredient_search(search).each do |ingredient|
-      ingredient.drinks.each do |drink|
-        drink_results << drink
-      end
-    end
-    drink_results
+  def joined_drink_search(search)
+    Drink.joins(drink_items: :ingredient).where("ingredients.name like ?", "%#{search}%" )
   end
 end
