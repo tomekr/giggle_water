@@ -1,9 +1,9 @@
 <table >
   <tbody>
-    <% drink.drink_items.order("ingredient_use asc").select{|d| d.ingredient_use == "Build"}.each do |drink_item| %>
+    <% drink.minimal_ingredients.each do |minimal_ingredient| %>
       <tr>
-        <td><%= drink_item.amount %></td>
-        <td class="ingredient-condensed"><%= drink_item.ingredient.name %></td>
+        <td><%= minimal_ingredient[:ingredient_amount] %></td>
+        <td class="ingredient-condensed"><%= minimal_ingredient[:ingredient_name] %></td>
       </tr>
     <% end %>
   </tbody>
