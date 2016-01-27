@@ -5,7 +5,7 @@
       <div class="panel-heading" role="tab" id="headingOne">
         <h4 class="panel-title">
           <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            Drink Results <span class="label label-info"><%= @drink_results.count %></span>
+            Drink Results <span class="badge"><%= @drink_results.count %></span>
           </a>
         </h4>
       </div>
@@ -32,7 +32,7 @@
       <div class="panel-heading" role="tab" id="headingTwo">
         <h4 class="panel-title">
           <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-            Drinks with Ingredient <%= params[:search] %><span class="label label-info"><%= @drinks_with_ingredient.count %></span>
+            Drinks with Ingredient <%= params[:search] %><span class="badge"><%= @drinks_with_ingredient.count %></span>
           </a>
         </h4>
       </div>
@@ -59,7 +59,7 @@
       <div class="panel-heading" role="tab" id="headingThree">
         <h4 class="panel-title">
           <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-            Ingredients Results<span class="label label-info"><%= @ingredient_results.count %></span>
+            Ingredients Results<span class="badge"><%= @ingredient_results.count %></span>
           </a>
         </h4>
       </div>
