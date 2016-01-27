@@ -6,14 +6,14 @@ class SearchController < ApplicationController
   end
 
   def drink_name_search(search)
-    Drink.where("name LIKE ?", "%#{search}%")
+    Drink.where("name ILIKE ?", "%#{search}%")
   end
-  
+
   def ingredient_search(search)
-    Ingredient.where("name LIKE ?", "%#{search}%")
+    Ingredient.where("name ILIKE ?", "%#{search}%")
   end
 
   def joined_drink_search(search)
-    Drink.joins(drink_items: :ingredient).where("ingredients.name like ?", "%#{search}%" )
+    Drink.joins(drink_items: :ingredient).where("ingredients.name ILIKE ?", "%#{search}%" )
   end
 end
